@@ -134,7 +134,8 @@ func generateProtoc(param protocParam) {
 	protodirs := getProtodirs(param.protoPath[0], param.imports)
 
 	// estimate args length to prevent expand
-	args := make([]string, 0, len(protodirs)+len(param.protoPath)+2)
+	args := make([]string, 0, len(protodirs)+len(param.protoPath)+3)
+	args = append(args, "-v")
 	for _, dir := range protodirs {
 		args = append(args, "-I", dir)
 	}
