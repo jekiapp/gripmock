@@ -5,6 +5,6 @@
 gripmock --stub=example/simple/stub example/simple/simple.proto &
 
 # wait for generated files to be available and gripmock is up
-sleep 15
+sleep 20
 
 go run example/simple/client/*.go
