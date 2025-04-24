@@ -134,8 +134,7 @@ func generateProtoc(param protocParam) {
 	protodirs := getProtodirs(param.protoPath[0], param.imports)
 
 	// estimate args length to prevent expand
-	args := make([]string, 0, len(protodirs)+len(param.protoPath)+3)
-	args = append(args, "--verbose")
+	args := make([]string, 0, len(protodirs)+len(param.protoPath)+2)
 	for _, dir := range protodirs {
 		args = append(args, "-I", dir)
 	}
@@ -147,6 +146,7 @@ func generateProtoc(param protocParam) {
 	args = append(args, "--go_out=plugins=grpc:"+pbOutput)
 	args = append(args, fmt.Sprintf("--gripmock_out=admin-port=%s,grpc-address=%s,grpc-port=%s:%s",
 		param.adminPort, param.grpcAddress, param.grpcPort, param.output))
+	fmt.Println("protoc args", args)
 	protoc := exec.Command("protoc", args...)
 	protoc.Stdout = os.Stdout
 	protoc.Stderr = os.Stderr
