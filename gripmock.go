@@ -135,7 +135,7 @@ func generateProtoc(param protocParam) {
 
 	// estimate args length to prevent expand
 	args := make([]string, 0, len(protodirs)+len(param.protoPath)+3)
-	args = append(args, "-v")
+	args = append(args, "--verbose")
 	for _, dir := range protodirs {
 		args = append(args, "-I", dir)
 	}

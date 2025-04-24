@@ -4,7 +4,9 @@
 
 gripmock --stub=example/simple/stub example/simple/simple.proto &
 
-cat go.mod
+# wait for generated files to be available and gripmock is up
+sleep 20
+
 echo "================="
 cat /go/src/grpc/server.go
 echo "================="
@@ -13,7 +15,5 @@ echo "================="
 ls -R /go/src/
 echo "================="
 
-# wait for generated files to be available and gripmock is up
-sleep 20
 
 go run example/simple/client/*.go
