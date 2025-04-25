@@ -13,7 +13,6 @@ import (
 	"syscall"
 
 	"github.com/tokopedia/gripmock/stub"
-	_ "github.com/tokopedia/gripmock/protogen"
 )
 
 func main() {
@@ -30,7 +29,7 @@ func main() {
 	}
 
 	// for backwards compatibility
-	if os.Args[1] == "gripmock" {
+	if len(os.Args) > 1 && os.Args[1] == "gripmock" {
 		os.Args = append(os.Args[:1], os.Args[2:]...)
 	}
 
@@ -147,6 +146,7 @@ func generateProtoc(param protocParam) {
 	args = append(args, "--go_out=plugins=grpc:"+pbOutput)
 	args = append(args, fmt.Sprintf("--gripmock_out=admin-port=%s,grpc-address=%s,grpc-port=%s:%s",
 		param.adminPort, param.grpcAddress, param.grpcPort, param.output))
+	fmt.Println("protoc args", args)
 	protoc := exec.Command("protoc", args...)
 	protoc.Stdout = os.Stdout
 	protoc.Stderr = os.Stderr
@@ -172,7 +172,7 @@ func fixGoPackage(protoPaths []string) []string {
 }
 
 func runGrpcServer(output string) (*exec.Cmd, <-chan error) {
-	run := exec.Command("go", "run", output+"server.go")
+	run := exec.Command("start_server.sh")
 	run.Stdout = os.Stdout
 	run.Stderr = os.Stderr
 	err := run.Start()

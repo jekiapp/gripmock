@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.20.3
-// source: stream.proto
+// source: advanced.proto
 
-package stream
+package advanced
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -31,7 +31,7 @@ type Request struct {
 
 func (x *Request) Reset() {
 	*x = Request{}
-	mi := &file_stream_proto_msgTypes[0]
+	mi := &file_advanced_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *Request) String() string {
 func (*Request) ProtoMessage() {}
 
 func (x *Request) ProtoReflect() protoreflect.Message {
-	mi := &file_stream_proto_msgTypes[0]
+	mi := &file_advanced_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Request.ProtoReflect.Descriptor instead.
 func (*Request) Descriptor() ([]byte, []int) {
-	return file_stream_proto_rawDescGZIP(), []int{0}
+	return file_advanced_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Request) GetName() string {
@@ -70,13 +70,14 @@ func (x *Request) GetName() string {
 type Reply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	ReturnCode    int32                  `protobuf:"varint,2,opt,name=return_code,json=returnCode,proto3" json:"return_code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Reply) Reset() {
 	*x = Reply{}
-	mi := &file_stream_proto_msgTypes[1]
+	mi := &file_advanced_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -88,7 +89,7 @@ func (x *Reply) String() string {
 func (*Reply) ProtoMessage() {}
 
 func (x *Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_stream_proto_msgTypes[1]
+	mi := &file_advanced_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -101,7 +102,7 @@ func (x *Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Reply.ProtoReflect.Descriptor instead.
 func (*Reply) Descriptor() ([]byte, []int) {
-	return file_stream_proto_rawDescGZIP(), []int{1}
+	return file_advanced_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Reply) GetMessage() string {
@@ -111,71 +112,74 @@ func (x *Reply) GetMessage() string {
 	return ""
 }
 
-var File_stream_proto protoreflect.FileDescriptor
+func (x *Reply) GetReturnCode() int32 {
+	if x != nil {
+		return x.ReturnCode
+	}
+	return 0
+}
 
-const file_stream_proto_rawDesc = "" +
+var File_advanced_proto protoreflect.FileDescriptor
+
+const file_advanced_proto_rawDesc = "" +
 	"\n" +
-	"\fstream.proto\x12\x06stream\"\x1d\n" +
+	"\x0eadvanced.proto\x12\badvanced\"\x1d\n" +
 	"\aRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"!\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"B\n" +
 	"\x05Reply\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\xa3\x01\n" +
-	"\bGripmock\x120\n" +
-	"\fserverStream\x12\x0f.stream.Request\x1a\r.stream.Reply0\x01\x120\n" +
-	"\fclientStream\x12\x0f.stream.Request\x1a\r.stream.Reply(\x01\x123\n" +
-	"\rbidirectional\x12\x0f.stream.Request\x1a\r.stream.Reply(\x010\x01B.Z,github.com/tokopedia/gripmock/example/streamb\x06proto3"
+	"\amessage\x18\x01 \x01(\tR\amessage\x12\x1f\n" +
+	"\vreturn_code\x18\x02 \x01(\x05R\n" +
+	"returnCode2:\n" +
+	"\bGripmock\x12.\n" +
+	"\bSayHello\x12\x11.advanced.Request\x1a\x0f.advanced.ReplyB0Z.github.com/tokopedia/gripmock/example/advancedb\x06proto3"
 
 var (
-	file_stream_proto_rawDescOnce sync.Once
-	file_stream_proto_rawDescData []byte
+	file_advanced_proto_rawDescOnce sync.Once
+	file_advanced_proto_rawDescData []byte
 )
 
-func file_stream_proto_rawDescGZIP() []byte {
-	file_stream_proto_rawDescOnce.Do(func() {
-		file_stream_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_stream_proto_rawDesc), len(file_stream_proto_rawDesc)))
+func file_advanced_proto_rawDescGZIP() []byte {
+	file_advanced_proto_rawDescOnce.Do(func() {
+		file_advanced_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_advanced_proto_rawDesc), len(file_advanced_proto_rawDesc)))
 	})
-	return file_stream_proto_rawDescData
+	return file_advanced_proto_rawDescData
 }
 
-var file_stream_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_stream_proto_goTypes = []any{
-	(*Request)(nil), // 0: stream.Request
-	(*Reply)(nil),   // 1: stream.Reply
+var file_advanced_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_advanced_proto_goTypes = []any{
+	(*Request)(nil), // 0: advanced.Request
+	(*Reply)(nil),   // 1: advanced.Reply
 }
-var file_stream_proto_depIdxs = []int32{
-	0, // 0: stream.Gripmock.serverStream:input_type -> stream.Request
-	0, // 1: stream.Gripmock.clientStream:input_type -> stream.Request
-	0, // 2: stream.Gripmock.bidirectional:input_type -> stream.Request
-	1, // 3: stream.Gripmock.serverStream:output_type -> stream.Reply
-	1, // 4: stream.Gripmock.clientStream:output_type -> stream.Reply
-	1, // 5: stream.Gripmock.bidirectional:output_type -> stream.Reply
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+var file_advanced_proto_depIdxs = []int32{
+	0, // 0: advanced.Gripmock.SayHello:input_type -> advanced.Request
+	1, // 1: advanced.Gripmock.SayHello:output_type -> advanced.Reply
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_stream_proto_init() }
-func file_stream_proto_init() {
-	if File_stream_proto != nil {
+func init() { file_advanced_proto_init() }
+func file_advanced_proto_init() {
+	if File_advanced_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_stream_proto_rawDesc), len(file_stream_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_advanced_proto_rawDesc), len(file_advanced_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_stream_proto_goTypes,
-		DependencyIndexes: file_stream_proto_depIdxs,
-		MessageInfos:      file_stream_proto_msgTypes,
+		GoTypes:           file_advanced_proto_goTypes,
+		DependencyIndexes: file_advanced_proto_depIdxs,
+		MessageInfos:      file_advanced_proto_msgTypes,
 	}.Build()
-	File_stream_proto = out.File
-	file_stream_proto_goTypes = nil
-	file_stream_proto_depIdxs = nil
+	File_advanced_proto = out.File
+	file_advanced_proto_goTypes = nil
+	file_advanced_proto_depIdxs = nil
 }
