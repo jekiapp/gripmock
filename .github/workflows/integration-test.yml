@@ -13,47 +13,45 @@ jobs:
       uses: actions/checkout@master
       
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v3
       
-    - name: Run Simple Example
-      uses: ./
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
       with:
-        entryPoint: example/simple/entrypoint.sh
-        args: simple
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Build and cache
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: false
+        load: true
+        tags: gripmock:test
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
+    - name: Run Simple Example
+      run: docker run --rm gripmock:test example/simple/entrypoint.sh 
         
     - name: Run Advanced Example
-      uses: ./
-      with:
-        entryPoint: example/advanced/entrypoint.sh
-        args: advanced
+      run: docker run --rm gripmock:test example/advanced/entrypoint.sh 
         
     - name: Run Stream Example
-      uses: ./
-      with:
-        entryPoint: example/stream/entrypoint.sh
-        args: stream
+      run: docker run --rm gripmock:test example/stream/entrypoint.sh 
         
     - name: Run WKT Example
-      uses: ./
-      with:
-        entryPoint: example/well_known_types/entrypoint.sh
+      run: docker run --rm gripmock:test example/well_known_types/entrypoint.sh
         
     - name: Run Multi Package Example
-      uses: ./
-      with:
-        entryPoint: example/multi-package/entrypoint.sh
+      run: docker run --rm gripmock:test example/multi-package/entrypoint.sh
         
     - name: Run Multi Files Example
-      uses: ./
-      with:
-        entryPoint: example/multi-files/entrypoint.sh
+      run: docker run --rm gripmock:test example/multi-files/entrypoint.sh
         
     - name: Run one-of Example
-      uses: ./
-      with:
-        entryPoint: example/one-of/entrypoint.sh
+      run: docker run --rm gripmock:test example/one-of/entrypoint.sh
         
     - name: Run stub subfolders example
-      uses: ./
-      with:
-        entryPoint: example/stub-subfolders/entrypoint.sh
+      run: docker run --rm gripmock:test example/stub-subfolders/entrypoint.sh
