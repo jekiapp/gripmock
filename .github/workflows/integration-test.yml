@@ -12,58 +12,48 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       
-    - name: Build image
-      uses: ./
-      with:
-        build-only: true
-        
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+      
     - name: Run Simple Example
       uses: ./
       with:
-        entrypoint: example/simple/entrypoint.sh
+        entryPoint: example/simple/entrypoint.sh
         args: simple
-        use-existing-image: true
         
     - name: Run Advanced Example
       uses: ./
       with:
-        entrypoint: example/advanced/entrypoint.sh
+        entryPoint: example/advanced/entrypoint.sh
         args: advanced
-        use-existing-image: true
         
     - name: Run Stream Example
       uses: ./
       with:
-        entrypoint: example/stream/entrypoint.sh
+        entryPoint: example/stream/entrypoint.sh
         args: stream
-        use-existing-image: true
         
     - name: Run WKT Example
       uses: ./
       with:
-        entrypoint: example/well_known_types/entrypoint.sh
-        use-existing-image: true
+        entryPoint: example/well_known_types/entrypoint.sh
         
     - name: Run Multi Package Example
       uses: ./
       with:
-        entrypoint: example/multi-package/entrypoint.sh
-        use-existing-image: true
+        entryPoint: example/multi-package/entrypoint.sh
         
     - name: Run Multi Files Example
       uses: ./
       with:
-        entrypoint: example/multi-files/entrypoint.sh
-        use-existing-image: true
+        entryPoint: example/multi-files/entrypoint.sh
         
     - name: Run one-of Example
       uses: ./
       with:
-        entrypoint: example/one-of/entrypoint.sh
-        use-existing-image: true
+        entryPoint: example/one-of/entrypoint.sh
         
     - name: Run stub subfolders example
       uses: ./
       with:
-        entrypoint: example/stub-subfolders/entrypoint.sh
-        use-existing-image: true
+        entryPoint: example/stub-subfolders/entrypoint.sh
