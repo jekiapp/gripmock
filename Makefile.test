@@ -31,7 +31,6 @@ test-simple:
 	@echo "Starting gripmock container for simple test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/simple/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -46,7 +45,6 @@ test-advanced:
 	@echo "Starting gripmock container for advanced test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/advanced/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -61,7 +59,6 @@ test-well-known-types:
 	@echo "Starting gripmock container for well-known types test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/well_known_types/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -76,7 +73,6 @@ test-stub-subfolders:
 	@echo "Starting gripmock container for stub subfolders test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/stub-subfolders/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -91,7 +87,6 @@ test-stream:
 	@echo "Starting gripmock container for stream test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/stream/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -106,7 +101,6 @@ test-one-of:
 	@echo "Starting gripmock container for one-of test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/one-of/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -121,7 +115,6 @@ test-multi-package:
 	@echo "Starting gripmock container for multi-package test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/multi-package/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
@@ -136,7 +129,6 @@ test-multi-files:
 	@echo "Starting gripmock container for multi-files test..."
 	@docker rm -f gripmock-test || true
 	docker run -d --name gripmock-test \
-		-v ./protogen:/go/src/github.com/tokopedia/gripmock/protogen \
 		--entrypoint=example/multi-files/entrypoint.sh \
 		$(DOCKER_IMAGE):$(TEST_VERSION) 
 	@echo "Waiting for server to start..."
