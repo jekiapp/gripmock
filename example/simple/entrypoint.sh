@@ -2,18 +2,11 @@
 
 # this file is used by .github/workflows/integration-test.yml
 
-gripmock --stub=example/simple/stub example/simple/simple.proto &
+gripmock --stub=example/simple/stub example/simple/simple.proto > gripmock.log 2>&1 &
 
-# wait for generated files to be available and gripmock is up
-sleep 20
+# Wait for gripmock to be ready
+wait_for_gripmock.sh
 
-echo "================="
-cat /go/src/grpc/server.go
-echo "================="
-cat /go/src/grpc/go.mod
-echo "================="
-ls -R /go/src/
-echo "================="
-
-
+echo "======== RUNNING CLIENT ========="
 go run example/simple/client/*.go
+echo "======== DONE ========="
