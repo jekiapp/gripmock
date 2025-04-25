@@ -33,25 +33,25 @@ jobs:
         cache-to: type=gha,mode=max
         
     - name: Run Simple Example
-      run: docker run --rm gripmock:test example/simple/entrypoint.sh 
+      run: docker run --rm --entrypoint example/simple/entrypoint.sh gripmock:test
         
     - name: Run Advanced Example
-      run: docker run --rm gripmock:test example/advanced/entrypoint.sh 
+      run: docker run --rm --entrypoint example/advanced/entrypoint.sh gripmock:test
         
     - name: Run Stream Example
-      run: docker run --rm gripmock:test example/stream/entrypoint.sh 
+      run: docker run --rm --entrypoint example/stream/entrypoint.sh gripmock:test
         
     - name: Run WKT Example
-      run: docker run --rm gripmock:test example/well_known_types/entrypoint.sh
+      run: docker run --rm --entrypoint example/well_known_types/entrypoint.sh gripmock:test
         
     - name: Run Multi Package Example
-      run: docker run --rm gripmock:test example/multi-package/entrypoint.sh
+      run: docker run --rm --entrypoint example/multi-package/entrypoint.sh gripmock:test
         
     - name: Run Multi Files Example
-      run: docker run --rm gripmock:test example/multi-files/entrypoint.sh
+      run: docker run --rm --entrypoint example/multi-files/entrypoint.sh gripmock:test
         
     - name: Run one-of Example
-      run: docker run --rm gripmock:test example/one-of/entrypoint.sh
+      run: docker run --rm --entrypoint example/one-of/entrypoint.sh gripmock:test
         
     - name: Run stub subfolders example
-      run: docker run --rm gripmock:test example/stub-subfolders/entrypoint.sh
+      run: docker run --rm --entrypoint example/stub-subfolders/entrypoint.sh gripmock:test
