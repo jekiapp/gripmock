@@ -8,8 +8,8 @@ gripmock --stub=example/advanced/stub example/advanced/advanced.proto > gripmock
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/advanced/client/*.go
-echo "======== DONE ========="
+go run example/advanced/client/*.go && \
+ echo "======== DONE ========="
 
 # kill the server
 kill %1 

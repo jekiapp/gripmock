@@ -10,5 +10,8 @@ gripmock --stub=example/multi-files/stub example/multi-files/file1.proto \
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/multi-files/client/*.go
-echo "======== DONE ========="
+go run example/multi-files/client/*.go && \
+ echo "======== DONE ========="
+
+# kill the server
+kill %1

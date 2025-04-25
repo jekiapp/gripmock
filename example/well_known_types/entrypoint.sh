@@ -8,8 +8,8 @@ gripmock --stub=example/well_known_types/stub example/well_known_types/wkt.proto
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/well_known_types/client/*.go
-echo "======== DONE ========="
+go run example/well_known_types/client/*.go && \
+ echo "======== DONE ========="
 
 # kill the server
 kill %1

@@ -8,5 +8,5 @@ gripmock --stub=example/simple/stub example/simple/simple.proto > gripmock.log 2
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/simple/client/*.go
-echo "======== DONE ========="
+go run example/simple/client/*.go && \
+ echo "======== DONE ========="

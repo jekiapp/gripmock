@@ -12,5 +12,5 @@ gripmock --stub=example/multi-package/stub --imports=example/multi-package/ \
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/multi-package/client/*.go
-echo "======== DONE ========="
+go run example/multi-package/client/*.go && \
+ echo "======== DONE ========="

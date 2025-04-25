@@ -8,8 +8,8 @@ gripmock --stub=example/stream/stub example/stream/stream.proto > gripmock.log 2
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/stream/client/*.go
-echo "======== DONE ========="
+go run example/stream/client/*.go && \
+ echo "======== DONE ========="
 
 # kill the server
 kill %1

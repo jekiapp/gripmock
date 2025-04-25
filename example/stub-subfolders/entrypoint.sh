@@ -9,8 +9,8 @@ gripmock --stub=example/stub-subfolders/stub example/stub-subfolders/stub-subfol
 wait_for_gripmock.sh
 
 echo "======== RUNNING CLIENT ========="
-go run example/stub-subfolders/client/*.go
-echo "======== DONE ========="
+go run example/stub-subfolders/client/*.go && \
+ echo "======== DONE ========="
 
 # kill the server
 kill %1
